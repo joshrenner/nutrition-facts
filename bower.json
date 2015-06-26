@@ -1,0 +1,29 @@
+{
+  "name": "nutrition-facts",
+  "version": "0.1.0",
+  "authors": [
+    "Josh Renner <josh@renner.mn>"
+  ],
+  "description": "A custom element for displaying nutrition facts",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "seed"
+  ],
+  "main": "nutrition-facts.html",
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "homepage": "https://github.com/joshrenner/nutrition-facts/",
+  "ignore": [
+    "/.*",
+    "/test/",
+    "/demo/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "*"
+  }
+}
