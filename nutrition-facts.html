@@ -2,33 +2,33 @@
 
 
 <dom-module id="nutrition-facts">
-
 	<style>
 		:host {
-			display: block;
+			--nutrition-facts-label-color: black;
+			display: table;
 			box-sizing: border-box;
-			border: #000 solid 1pt;
+			border: var(--nutrition-facts-label-color) solid 1pt;
 			font: 8pt/1.4 Helvetica, 'Helvetica Black', san-serif;
 			padding: 3pt 0;
+			color: var(--nutrition-facts-label-color);
 		}
 
-		h1, p {
+		h1, p, hr, table {
 			margin: 0;
 		}
 
 		hr {
 			box-sizing: content-box;
-			border: 0;
-			background: #000;
-			height: 1pt;
+			border: var(--nutrition-facts-label-color) solid 0;
+			border-top-width: 1pt;
 			font-size: 0 !important;
 			line-height: 0 !important;
 		}
 		hr.hr-1 {
-			height: 7pt;
+			border-top-width: 7pt;
 		}
 		hr.hr-2 {
-			height: 3pt;
+			border-top-width: 3pt;
 		}
 
 		table {
@@ -38,10 +38,10 @@
 		table td {
 			padding: 0;
 		}
-		tr td + td {
+
+		.x-right {
 			text-align: right;
 		}
-
 		.x-label {
 			font-weight: 700;
 		}
@@ -50,6 +50,7 @@
 		}
 		.x-block .x-block {
 			margin-right: 0;
+			margin-left: 1em;
 		}
 		.x-strong {
 			font-family: 'Helvetica Black', 'Franklin Gothic Heavy', 'Helvetica', sans-serif;
@@ -75,14 +76,14 @@
 			<h1 class="x-strong">Nutrition Facts</h1>
 			<p class="servingSize">
 				<span class="key">Serving Size</span>
-				<span class="value">{{facts.servingSize}}</span>
+				<span class="value">{{data.servingSize}}</span>
 			</p>
 			<p class="servingsPerContainer">
 				<span class="key">Servings Per Container</span>
-				<span class="value">{{facts.servingsPerContainer}}</span>
+				<span class="value">{{data.servingsPerContainer}}</span>
 			</p>
-			<hr class="hr-1">
 		</header>
+		<hr class="hr-1 x-block">
 		<div id="perServingLabel" class="x-block">
 			<p class="x-strong">Amount Per Serving</p>
 			<hr>
@@ -91,15 +92,16 @@
 			<table><tr>
 				<td>
 					<span class="key x-label">Calories</span>
-					<span class="value">{{facts.calories}}</span>
+					<span class="value">{{data.calories}}</span>
 				</td>
-				<td>
+				<td>&nbsp; &nbsp;</td>
+				<td class="x-right">
 					<span class="key">Calories from Fat</span>
-					<span class="value">{{facts.caloriesFromFat}}</span>
+					<span class="value">{{data.caloriesFromFat}}</span>
 				</td>
 			</tr></table>
-			<hr class="hr-2">
 		</div>
+		<hr class="hr-2 x-block">
 		<div id="dailyValueLabel" class="x-block">
 			<p>&#37; Daily Value<sup>&#42;</sup></p>
 		</div>
@@ -108,131 +110,131 @@
 				<div id="totalFat">
 					<hr>
 					<span class="key x-strong">Total Fat</span>
-					<span class="value">{{facts.totalFat}}</span>
+					<span class="value">{{data.totalFat}}</span>
 				</div>
-				<div id="saturatedFat" class="x-block">
+				<div id="saturatedFat" class="x-block" hidden="{{!data.saturatedFat}}">
 					<hr>
 					<span class="key">Saturated Fat</span>
-					<span class="value">{{facts.saturatedFat}}</span>
+					<span class="value">{{data.saturatedFat}}</span>
 				</div>
-				<div id="transFat" class="x-block">
+				<div id="transFat" class="x-block" hidden="{{!data.transFat}}">
 					<hr>
 					<span class="key"><em>Trans</em> Fat</span>
-					<span class="value">{{facts.transFat}}</span>
+					<span class="value">{{data.transFat}}</span>
 				</div>
 			</div>
-			<div id="cholesterol">
+			<div id="cholesterol" hidden="{{!data.cholesterol}}">
 				<hr>
 				<span class="key x-strong">Cholesterol</span>
-				<span class="value">{{facts.cholesterol}}</span>
+				<span class="value">{{data.cholesterol}}</span>
 			</div>
 			<div id="sodium">
 				<hr>
 				<span class="key x-strong">Sodium</span>
-				<span class="value">{{facts.sodium}}</span>
+				<span class="value">{{data.sodium}}</span>
 			</div>
 			<div id="carbohydrates">
 				<div id="totalCarbohydrates">
 					<hr>
 					<span class="key x-strong">Total Carbohydrate</span>
-					<span class="value">{{facts.carbohydrate}}</span>
+					<span class="value">{{data.carbohydrate}}</span>
 				</div>
-				<div id="dietaryCarbohydrates" class="x-block">
+				<div id="dietaryCarbohydrates" class="x-block" hidden="{{!data.dietaryCarbohydrate}}">
 					<hr>
-					<span class="key">Dietary Carbohydrate</span>
-					<span class="value">{{facts.dietaryCarbohydrate}}</span>
+					<span class="key">Dietary Fiber</span>
+					<span class="value">{{data.dietaryCarbohydrate}}</span>
 				</div>
-				<div id="sugarsCarbohydrates" class="x-block">
+				<div id="sugarsCarbohydrates" class="x-block" hidden="{{!data.sugarsCarbohydrate}}">
 					<hr>
 					<span class="key">Sugars</span>
-					<span class="value">{{facts.sugarsCarbohydrate}}</span>
+					<span class="value">{{data.sugarsCarbohydrate}}</span>
 				</div>
 			</div>
-			<div id="protein">
+			<div id="protein" hidden="{{!data.protein}}">
 				<hr>
 				<span class="key x-strong">Protein</span>
-				<span class="value">{{facts.protein}}</span>
+				<span class="value">{{data.protein}}</span>
 			</div>
 		</div>
+		<hr class="hr-1 x-block">
+		<div id="vitamins" class="x-block">
+			<table><tr>
+				<td>
+					<span class="key">Vitamin A</span>
+				</td>
+				<td class="x-right">
+					<span class="value">{{data.vitaminA}}</span>
+				</td>
+				<td>&nbsp;&#8226;&nbsp;</td>
+				<td>
+					<span class="key">Vitamin C</span>
+				</td>
+				<td class="x-right">
+					<span class="value">{{data.vitaminC}}</span>
+				</td>
+			</tr><tr>
+				<td>
+					<span class="key">Calcium</span>
+				</td>
+				<td class="x-right">
+					<span class="value">{{data.calcium}}</span>
+				</td>
+				<td>&nbsp;&#8226;&nbsp;</td>
+				<td>
+					<span class="key">Iron</span>
+				</td>
+				<td class="x-right">
+					<span class="value">{{data.iron}}</span>
+				</td>
+			</tr></table>
+		</div>
 	</template>
-
+	<script>
+		Polymer({
+			is: 'nutrition-facts',
+			properties: {
+				/**
+				 * Describes the nutrition facts of the element as JSON.
+				 *
+				 * @type {{servingSize: string, servingsPerContainer: number|string, calories: number, caloriesFromFat: number}}
+				 */
+				data: {
+					type: Object
+				},
+				servingSize: String,
+				servingsPerContainer: Number,
+				calories: Number,
+				caloriesFromFat: Number,
+				totalFat: Number,
+				saturatedFat: Number,
+				transFat: Number,
+				cholesterol: Number,
+				sodium: Number,
+				carbohydrate: Number,
+				dietaryFiber: Number,
+				sugars: Number,
+				protein: Number,
+				vitaminA: Number,
+				vitaminC: Number,
+				iron: Number,
+				calcium: Number
+			}
+		});
+	</script>
 </dom-module>
 
-<script>
 
-	Polymer({
 
-		is: 'nutrition-facts',
-
-		properties: {
-			/**
-			 * Describes the nutrition facts of the element.
-			 *
-			 * @type {{servingSize: string, servingsPerContainer: number|string, calories: number, caloriesFromFat: number}}
-			 */
-			facts: {
-				type: Object
-			}
-
-		},
-
-		// Element Lifecycle
-
-		ready: function() {
-			// `ready` is called after all elements have been configured, but
-			// propagates bottom-up. This element's children are ready, but parents
-			// are not.
-			//
-			// This is the point where you should make modifications to the DOM (when
-			// necessary), or kick off any processes the element wants to perform.
-		},
-
-		attached: function() {
-			// `attached` fires once the element and its parents have been inserted
-			// into a document.
-			//
-			// This is a good place to perform any work related to your element's
-			// visual state or active behavior (measuring sizes, beginning animations,
-			// loading resources, etc).
-		},
-
-		detached: function() {
-			// The analog to `attached`, `detached` fires when the element has been
-			// removed from a document.
-			//
-			// Use this to clean up anything you did in `attached`.
-		},
-
-		// Element Behavior
-
-		/**
-		 * The `nutrition-facts-lasers` event is fired whenever `fireLasers` is called.
-		 *
-		 * @event nutrition-facts-lasers
-		 * @detail {{sound: String}}
-		 */
-
-		/**
-		 * Sometimes it's just nice to say hi.
-		 *
-		 * @param {string} greeting A positive greeting.
-		 * @return {string} The full greeting.
-		 */
-		sayHello: function(greeting) {
-			var response = greeting || 'Hello World!';
-			return 'nutrition-facts says, ' + response;
-		},
-
-		/**
-		 * Attempts to destroy this element's enemies with an any beam of light!
-		 *
-		 * Or, at least, dispatches an event in the vain hope that someone else will
-		 * do the zapping.
-		 */
-		fireLasers: function() {
-			this.fire('nutrition-facts-lasers', {sound: 'Pew pew!'});
+<dom-module id="my-wrapper">
+	<style>
+		:host {
+			--nutrition-facts-label-color: green;
 		}
-
-	});
-
-</script>
+	</style>
+	<template>
+		<p>my wrapper</p>
+	</template>
+	<script>
+		Polymer({ is: 'my-wrapper'});
+	</script>
+</dom-module>

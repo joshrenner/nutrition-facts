@@ -9,20 +9,39 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-    <title>nutrition-facts Demo</title>
-    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="../nutrition-facts.html">
-  </head>
-  <body>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+		<title>nutrition-facts Demo</title>
+		<script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+		<link rel="import" href="../nutrition-facts.html">
+		
+		<style>
+			nutrition-facts {
+				margin: 1em;
+			}
+		</style>
+	</head>
+	<body>
 
-    <p>An example of <code>&lt;nutrition-facts&gt;</code>:</p>
+		<p>An example of <code>&lt;nutrition-facts&gt;</code>:</p>
 
 
-    <nutrition-facts facts='{"servingSize": "228g", "servingsPerContainer": 2, "calories": 15, "caloriesFromFat": 8, "totalFat": 10, "saturatedFat": 10, "transFat": 10, "cholesterol": 10, "sodium": 10, "carbohydrate": 10, "dietaryCarbohydrate": 10, "sugarsCarbohydrate": 10, "protein": 10}'>
-    </nutrition-facts>
+		<!--<nutrition-facts data='{"servingSize": "228g", "servingsPerContainer": 2, "calories": 15, "caloriesFromFat": 8, "totalFat": 10, "saturatedFat": 10, "transFat": 10, "cholesterol": 10, "sodium": 10, "carbohydrate": 10, "dietaryCarbohydrate": 10, "sugarsCarbohydrate": 10, "protein": 10, "vitaminA": 4, "vitaminC": 4, "iron": 6, "calcium": 10}'>-->
+		<!--</nutrition-facts>-->
 
-  </body>
+		<nutrition-facts serving-size="228g" servings-per-container="2"
+						 calories="15" calories-from-fat="8"
+						 total-fat="10" saturated-fat="10" trans-fat="10"
+						 cholesterol="10" sodium="10"
+						 carbohydrate="10" dietary-fiber="10" sugars="10"
+						 protein="10" vitamin-a="4" vitamin-c="4" iron="6" calcium="10">
+		</nutrition-facts>
+
+		<nutrition-facts data='{"servingSize": "228g", "servingsPerContainer": 2}'/>
+
+
+
+		<my-wrapper/>
+	</body>
 </html>
