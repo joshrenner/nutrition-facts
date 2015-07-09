@@ -1,4 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-ajax/iron-ajax.html">
+<script src="../lodash/lodash.js"></script>
 
 
 <dom-module id="nutrition-facts">
@@ -74,6 +76,14 @@
 	</style>
 
 	<template>
+		<iron-ajax
+				id="dailyReferenceValues"
+				url=""
+				handle-as="json"
+				on-response="hresponse"
+				debounce-duration="300">
+		</iron-ajax>
+
 		<header id="servings" class="x-block">
 			<h1 class="x-strong">Nutrition Facts</h1>
 			<p class="servingSize">
@@ -275,8 +285,19 @@
 					computed: "getNutrientValue(data.calcium)"
 				}
 			},
-			created: function() {
-				this.dv = this.resolveUrl('us.json');
+
+			ready: function() {
+				this.$.dailyReferenceValues.url = this.resolveUrl('data/us.json');
+				this.$.dailyReferenceValues.generateRequest();
+			},
+
+			hresponse: function(request) {
+				this.dailyValues = _.chain(request.detail.response.results)
+						.indexBy(function (object) {
+							return _.camelCase(object.food_value);
+						})
+						.mapValues('dv_value_numbers')
+						.value();
 			},
 
 			getNutrientValue: function (nutrient) {
