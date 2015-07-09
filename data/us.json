@@ -1,0 +1,202 @@
+{
+	"results": [
+		{
+			"dv_value_numbers": 65,
+			"food_value": "Total Fat",
+			"dv_value": "65 grams (g)",
+			"dv_value_numbers/_source": "65"
+		},
+		{
+			"dv_value_numbers": 20,
+			"food_value": "Saturated Fat",
+			"dv_value": "20 g",
+			"dv_value_numbers/_source": "20"
+		},
+		{
+			"dv_value_numbers": 300,
+			"food_value": "Cholesterol",
+			"dv_value": "300 milligrams (mg)",
+			"dv_value_numbers/_source": "300"
+		},
+		{
+			"dv_value_numbers": 2400,
+			"food_value": "Sodium",
+			"dv_value": "2,400 mg",
+			"dv_value_numbers/_source": "2,400"
+		},
+		{
+			"dv_value_numbers": 3500,
+			"food_value": "Potassium",
+			"dv_value": "3,500 mg",
+			"dv_value_numbers/_source": "3,500"
+		},
+		{
+			"dv_value_numbers": 300,
+			"food_value": "Total Carbohydrate",
+			"dv_value": "300 g",
+			"dv_value_numbers/_source": "300"
+		},
+		{
+			"dv_value_numbers": 25,
+			"food_value": "Dietary Fiber",
+			"dv_value": "25 g",
+			"dv_value_numbers/_source": "25"
+		},
+		{
+			"dv_value_numbers": 50,
+			"food_value": "Protein",
+			"dv_value": "50 g",
+			"dv_value_numbers/_source": "50"
+		},
+		{
+			"dv_value_numbers": 5000,
+			"food_value": "Vitamin A",
+			"dv_value": "5,000 International Units (IU)",
+			"dv_value_numbers/_source": "5,000"
+		},
+		{
+			"dv_value_numbers": 60,
+			"food_value": "Vitamin C",
+			"dv_value": "60 mg",
+			"dv_value_numbers/_source": "60"
+		},
+		{
+			"dv_value_numbers": 1000,
+			"food_value": "Calcium",
+			"dv_value": "1,000 mg",
+			"dv_value_numbers/_source": "1,000"
+		},
+		{
+			"dv_value_numbers": 18,
+			"food_value": "Iron",
+			"dv_value": "18 mg",
+			"dv_value_numbers/_source": "18"
+		},
+		{
+			"dv_value_numbers": 400,
+			"food_value": "Vitamin D",
+			"dv_value": "400 IU",
+			"dv_value_numbers/_source": "400"
+		},
+		{
+			"dv_value_numbers": 30,
+			"food_value": "Vitamin E",
+			"dv_value": "30 IU",
+			"dv_value_numbers/_source": "30"
+		},
+		{
+			"dv_value_numbers": 80,
+			"food_value": "Vitamin K",
+			"dv_value": "80 micrograms µg",
+			"dv_value_numbers/_source": "80"
+		},
+		{
+			"dv_value_numbers": 1.5,
+			"food_value": "Thiamin",
+			"dv_value": "1.5 mg",
+			"dv_value_numbers/_source": "1.5"
+		},
+		{
+			"dv_value_numbers": 1.7,
+			"food_value": "Riboflavin",
+			"dv_value": "1.7 mg",
+			"dv_value_numbers/_source": "1.7"
+		},
+		{
+			"dv_value_numbers": 20,
+			"food_value": "Niacin",
+			"dv_value": "20 mg",
+			"dv_value_numbers/_source": "20"
+		},
+		{
+			"dv_value_numbers": 2,
+			"food_value": "Vitamin B6",
+			"dv_value": "2 mg",
+			"dv_value_numbers/_source": "2"
+		},
+		{
+			"dv_value_numbers": 400,
+			"food_value": "Folate",
+			"dv_value": "400 µg",
+			"dv_value_numbers/_source": "400"
+		},
+		{
+			"dv_value_numbers": 6,
+			"food_value": "Vitamin B12",
+			"dv_value": "6 µg",
+			"dv_value_numbers/_source": "6"
+		},
+		{
+			"dv_value_numbers": 300,
+			"food_value": "Biotin",
+			"dv_value": "300 µg",
+			"dv_value_numbers/_source": "300"
+		},
+		{
+			"dv_value_numbers": 10,
+			"food_value": "Pantothenic acid",
+			"dv_value": "10 mg",
+			"dv_value_numbers/_source": "10"
+		},
+		{
+			"dv_value_numbers": 1000,
+			"food_value": "Phosphorus",
+			"dv_value": "1,000 mg",
+			"dv_value_numbers/_source": "1,000"
+		},
+		{
+			"dv_value_numbers": 150,
+			"food_value": "Iodine",
+			"dv_value": "150 µg",
+			"dv_value_numbers/_source": "150"
+		},
+		{
+			"dv_value_numbers": 400,
+			"food_value": "Magnesium",
+			"dv_value": "400 mg",
+			"dv_value_numbers/_source": "400"
+		},
+		{
+			"dv_value_numbers": 15,
+			"food_value": "Zinc",
+			"dv_value": "15 mg",
+			"dv_value_numbers/_source": "15"
+		},
+		{
+			"dv_value_numbers": 70,
+			"food_value": "Selenium",
+			"dv_value": "70 µg",
+			"dv_value_numbers/_source": "70"
+		},
+		{
+			"dv_value_numbers": 2,
+			"food_value": "Copper",
+			"dv_value": "2 mg",
+			"dv_value_numbers/_source": "2"
+		},
+		{
+			"dv_value_numbers": 2,
+			"food_value": "Manganese",
+			"dv_value": "2 mg",
+			"dv_value_numbers/_source": "2"
+		},
+		{
+			"dv_value_numbers": 120,
+			"food_value": "Chromium",
+			"dv_value": "120 µg",
+			"dv_value_numbers/_source": "120"
+		},
+		{
+			"dv_value_numbers": 75,
+			"food_value": "Molybdenum",
+			"dv_value": "75 µg",
+			"dv_value_numbers/_source": "75"
+		},
+		{
+			"dv_value_numbers": 3400,
+			"food_value": "Chloride",
+			"dv_value": "3,400 mg",
+			"dv_value_numbers/_source": "3,400"
+		}
+	]
+}

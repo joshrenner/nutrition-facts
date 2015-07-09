@@ -4,6 +4,7 @@
 <dom-module id="nutrition-facts">
 	<style>
 		:host {
+			--nutrition-facts-label-background: white;
 			--nutrition-facts-label-color: black;
 			display: table;
 			box-sizing: border-box;
@@ -11,6 +12,7 @@
 			font: 8pt/1.4 Helvetica, 'Helvetica Black', san-serif;
 			padding: 3pt 0;
 			color: var(--nutrition-facts-label-color);
+			background: var(--nutrition-facts-label-background);
 		}
 
 		h1, p, hr, table {
@@ -92,12 +94,12 @@
 			<table><tr>
 				<td>
 					<span class="key x-label">Calories</span>
-					<span class="value">{{data.calories}}</span>
+					<span class="value">{{calories.amount}}</span>
 				</td>
 				<td>&nbsp; &nbsp;</td>
 				<td class="x-right">
 					<span class="key">Calories from Fat</span>
-					<span class="value">{{data.caloriesFromFat}}</span>
+					<span class="value">{{caloriesFromFat.amount}}</span>
 				</td>
 			</tr></table>
 		</div>
@@ -110,50 +112,50 @@
 				<div id="totalFat">
 					<hr>
 					<span class="key x-strong">Total Fat</span>
-					<span class="value">{{data.totalFat}}</span>
+					<span class="value">{{totalFat.amount}}</span>
 				</div>
-				<div id="saturatedFat" class="x-block" hidden="{{!data.saturatedFat}}">
+				<div id="saturatedFat" class="x-block" hidden="{{!saturatedFat}}">
 					<hr>
 					<span class="key">Saturated Fat</span>
-					<span class="value">{{data.saturatedFat}}</span>
+					<span class="value">{{saturatedFat.amount}}</span>
 				</div>
-				<div id="transFat" class="x-block" hidden="{{!data.transFat}}">
+				<div id="transFat" class="x-block" hidden="{{!transFat}}">
 					<hr>
 					<span class="key"><em>Trans</em> Fat</span>
-					<span class="value">{{data.transFat}}</span>
+					<span class="value">{{transFat.amount}}</span>
 				</div>
 			</div>
-			<div id="cholesterol" hidden="{{!data.cholesterol}}">
+			<div id="cholesterol" hidden="{{!cholesterol}}">
 				<hr>
 				<span class="key x-strong">Cholesterol</span>
-				<span class="value">{{data.cholesterol}}</span>
+				<span class="value">{{cholesterol.amount}}</span>
 			</div>
 			<div id="sodium">
 				<hr>
 				<span class="key x-strong">Sodium</span>
-				<span class="value">{{data.sodium}}</span>
+				<span class="value">{{sodium.amount}}</span>
 			</div>
 			<div id="carbohydrates">
 				<div id="totalCarbohydrates">
 					<hr>
 					<span class="key x-strong">Total Carbohydrate</span>
-					<span class="value">{{data.carbohydrate}}</span>
+					<span class="value">{{carbohydrate.amount}}</span>
 				</div>
-				<div id="dietaryCarbohydrates" class="x-block" hidden="{{!data.dietaryCarbohydrate}}">
+				<div id="dietaryCarbohydrates" class="x-block" hidden="{{!dietaryFiber}}">
 					<hr>
 					<span class="key">Dietary Fiber</span>
-					<span class="value">{{data.dietaryCarbohydrate}}</span>
+					<span class="value">{{dietaryFiber.amount}}</span>
 				</div>
-				<div id="sugarsCarbohydrates" class="x-block" hidden="{{!data.sugarsCarbohydrate}}">
+				<div id="sugarsCarbohydrates" class="x-block" hidden="{{!sugars}}">
 					<hr>
 					<span class="key">Sugars</span>
-					<span class="value">{{data.sugarsCarbohydrate}}</span>
+					<span class="value">{{sugars.amount}}</span>
 				</div>
 			</div>
-			<div id="protein" hidden="{{!data.protein}}">
+			<div id="protein" hidden="{{!protein}}">
 				<hr>
 				<span class="key x-strong">Protein</span>
-				<span class="value">{{data.protein}}</span>
+				<span class="value">{{protein.amount}}</span>
 			</div>
 		</div>
 		<hr class="hr-1 x-block">
@@ -163,28 +165,28 @@
 					<span class="key">Vitamin A</span>
 				</td>
 				<td class="x-right">
-					<span class="value">{{data.vitaminA}}</span>
+					<span class="value">{{vitaminA.amount}}</span>
 				</td>
 				<td>&nbsp;&#8226;&nbsp;</td>
 				<td>
 					<span class="key">Vitamin C</span>
 				</td>
 				<td class="x-right">
-					<span class="value">{{data.vitaminC}}</span>
+					<span class="value">{{vitaminC.amount}}</span>
 				</td>
 			</tr><tr>
 				<td>
 					<span class="key">Calcium</span>
 				</td>
 				<td class="x-right">
-					<span class="value">{{data.calcium}}</span>
+					<span class="value">{{calcium.amount}}</span>
 				</td>
 				<td>&nbsp;&#8226;&nbsp;</td>
 				<td>
 					<span class="key">Iron</span>
 				</td>
 				<td class="x-right">
-					<span class="value">{{data.iron}}</span>
+					<span class="value">{{iron.amount}}</span>
 				</td>
 			</tr></table>
 		</div>
@@ -199,42 +201,92 @@
 				 * @type {{servingSize: string, servingsPerContainer: number|string, calories: number, caloriesFromFat: number}}
 				 */
 				data: {
-					type: Object
+					type: Object,
+					value: function() {
+						return {};
+					}
 				},
-				servingSize: String,
-				servingsPerContainer: Number,
-				calories: Number,
-				caloriesFromFat: Number,
-				totalFat: Number,
-				saturatedFat: Number,
-				transFat: Number,
-				cholesterol: Number,
-				sodium: Number,
-				carbohydrate: Number,
-				dietaryFiber: Number,
-				sugars: Number,
-				protein: Number,
-				vitaminA: Number,
-				vitaminC: Number,
-				iron: Number,
-				calcium: Number
+				servingSize: {
+					type: String,
+					readOnly: true
+				},
+				servingsPerContainer: {
+					type: Number,
+					readOnly: true
+				},
+				calories: {
+					type: Number,
+					computed: "getNutrientValue(data.calories)"
+				},
+				caloriesFromFat: {
+					type: Number,
+					computed: "getNutrientValue(data.caloriesFromFat)"
+				},
+				totalFat: {
+					type: Number,
+					computed: "getNutrientValue(data.totalFat)"
+				},
+				saturatedFat: {
+					type: Number,
+					computed: "getNutrientValue(data.saturatedFat)"
+				},
+				transFat: {
+					type: Number,
+					computed: "getNutrientValue(data.transFat)"
+				},
+				cholesterol: {
+					type: Number,
+					computed: "getNutrientValue(data.cholesterol)"
+				},
+				sodium: {
+					type: Number,
+					computed: "getNutrientValue(data.sodium)"
+				},
+				carbohydrate: {
+					type: Number,
+					computed: "getNutrientValue(data.carbohydrate)"
+				},
+				dietaryFiber: {
+					type: Number,
+					computed: "getNutrientValue(data.dietaryFiber)"
+				},
+				sugars: {
+					type: Number,
+					computed: "getNutrientValue(data.sugars)"
+				},
+				protein: {
+					type: Number,
+					computed: "getNutrientValue(data.protein)"
+				},
+				vitaminA: {
+					type: Number,
+					computed: "getNutrientValue(data.vitaminA)"
+				},
+				vitaminC: {
+					type: Number,
+					computed: "getNutrientValue(data.vitaminC)"
+				},
+				iron: {
+					type: Number,
+					computed: "getNutrientValue(data.iron)"
+				},
+				calcium: {
+					type: Number,
+					computed: "getNutrientValue(data.calcium)"
+				}
+			},
+			created: function() {
+				this.dv = this.resolveUrl('us.json');
+			},
+
+			getNutrientValue: function (nutrient) {
+				if (!nutrient) return false;
+				return {
+					amount: nutrient,
+					dailyReferenceValue: nutrient,
+					referenceDailyIntakes: nutrient
+				};
 			}
 		});
-	</script>
-</dom-module>
-
-
-
-<dom-module id="my-wrapper">
-	<style>
-		:host {
-			--nutrition-facts-label-color: green;
-		}
-	</style>
-	<template>
-		<p>my wrapper</p>
-	</template>
-	<script>
-		Polymer({ is: 'my-wrapper'});
 	</script>
 </dom-module>

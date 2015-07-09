@@ -28,7 +28,7 @@ And you can run it via:
     polyserve
 
 Once running, you can preview your element at
-`http://localhost:8080/components/nutrition-facts/`, where `nutrition-facts` is the name of the directory containing it.
+`http://localhost:8080/components/nutrition-facts/`
 
 
 ## Testing Your Element
