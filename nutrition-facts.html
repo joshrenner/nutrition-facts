@@ -80,7 +80,7 @@
 				id="dailyReferenceValues"
 				url=""
 				handle-as="json"
-				on-response="hresponse"
+				on-response="setDailyValues"
 				debounce-duration="300">
 		</iron-ajax>
 
@@ -95,21 +95,27 @@
 				<span class="value">{{data.servingsPerContainer}}</span>
 			</p>
 		</header>
+
 		<hr class="hr-1 x-block">
 		<div id="perServingLabel" class="x-block">
 			<p class="x-strong">Amount Per Serving</p>
 			<hr>
 		</div>
+
 		<div id="calories" class="x-block">
 			<table><tr>
 				<td>
 					<span class="key x-label">Calories</span>
-					<span class="value">{{calories.amount}}</span>
+					<span class="value">
+						<span>{{calories.amount}}</span><span>{{calories.unit}}</span>
+					</span>
 				</td>
 				<td>&nbsp; &nbsp;</td>
 				<td class="x-right">
 					<span class="key">Calories from Fat</span>
-					<span class="value">{{caloriesFromFat.amount}}</span>
+					<span class="value">
+						<span>{{caloriesFromFat.amount}}</span><span>{{caloriesFromFat.unit}}</span>
+					</span>
 				</td>
 			</tr></table>
 		</div>
@@ -117,55 +123,137 @@
 		<div id="dailyValueLabel" class="x-block">
 			<p>&#37; Daily Value<sup>&#42;</sup></p>
 		</div>
+
 		<div id="nutrients" class="x-block">
 			<div id="fat">
 				<div id="totalFat">
 					<hr>
-					<span class="key x-strong">Total Fat</span>
-					<span class="value">{{totalFat.amount}}</span>
+					<table>
+						<tr>
+							<td>
+								<span class="key x-strong">Total Fat</span>
+								<span class="value">
+									<span>{{totalFat.amount}}</span><span>{{totalFat.unit}}</span>
+								</span>
+							</td>
+							<td class="x-right">{{totalFat.referenceDailyIntakes}}</td>
+						</tr>
+					</table>
 				</div>
 				<div id="saturatedFat" class="x-block" hidden="{{!saturatedFat}}">
-					<hr>
-					<span class="key">Saturated Fat</span>
-					<span class="value">{{saturatedFat.amount}}</span>
+					<hr class="hr">
+					<table>
+						<tr>
+							<td>
+								<span class="key">Saturated Fat</span>
+								<span class="value">
+									<span>{{saturatedFat.amount}}</span><span>{{saturatedFat.unit}}</span>
+								</span>
+							</td>
+							<td class="x-right">{{saturatedFat.referenceDailyIntakes}}</td>
+						</tr>
+					</table>
 				</div>
 				<div id="transFat" class="x-block" hidden="{{!transFat}}">
 					<hr>
-					<span class="key"><em>Trans</em> Fat</span>
-					<span class="value">{{transFat.amount}}</span>
+					<table>
+						<tr>
+							<td>
+								<span class="key"><em>Trans</em> Fat</span>
+								<span class="value">
+									<span>{{transFat.amount}}</span><span>{{transFat.unit}}</span>
+								</span>
+							</td>
+							<td class="x-right">{{transFat.referenceDailyIntakes}}</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 			<div id="cholesterol" hidden="{{!cholesterol}}">
 				<hr>
-				<span class="key x-strong">Cholesterol</span>
-				<span class="value">{{cholesterol.amount}}</span>
+				<table>
+					<tr>
+						<td>
+							<span class="key x-strong">Cholesterol</span>
+							<span class="value">
+								<span>{{cholesterol.amount}}</span><span>{{cholesterol.unit}}</span>
+							</span>
+						</td>
+						<td class="x-right">{{cholesterol.referenceDailyIntakes}}</td>
+					</tr>
+				</table>
 			</div>
 			<div id="sodium">
 				<hr>
-				<span class="key x-strong">Sodium</span>
-				<span class="value">{{sodium.amount}}</span>
+				<table>
+					<tr>
+						<td>
+							<span class="key x-strong">Sodium</span>
+							<span class="value">
+								<span>{{sodium.amount}}</span><span>{{sodium.unit}}</span>
+							</span>
+						</td>
+						<td class="x-right">{{sodium.referenceDailyIntakes}}</td>
+					</tr>
+				</table>
 			</div>
 			<div id="carbohydrates">
 				<div id="totalCarbohydrates">
 					<hr>
-					<span class="key x-strong">Total Carbohydrate</span>
-					<span class="value">{{carbohydrate.amount}}</span>
+					<table>
+						<tr>
+							<td>
+								<span class="key x-strong">Total Carbohydrate</span>
+								<span class="value">
+									<span>{{carbohydrate.amount}}</span><span>{{carbohydrate.unit}}</span>
+								</span>
+							</td>
+							<td class="x-right">{{carbohydrate.referenceDailyIntakes}}</td>
+						</tr>
+					</table>
 				</div>
 				<div id="dietaryCarbohydrates" class="x-block" hidden="{{!dietaryFiber}}">
 					<hr>
-					<span class="key">Dietary Fiber</span>
-					<span class="value">{{dietaryFiber.amount}}</span>
+					<table>
+						<tr>
+							<td>
+								<span class="key">Dietary Fiber</span>
+								<span class="value">
+									<span>{{dietaryFiber.amount}}</span><span>{{dietaryFiber.unit}}</span>
+								</span>
+							</td>
+							<td class="x-right">{{dietaryFiber.referenceDailyIntakes}}</td>
+						</tr>
+					</table>
 				</div>
 				<div id="sugarsCarbohydrates" class="x-block" hidden="{{!sugars}}">
 					<hr>
-					<span class="key">Sugars</span>
-					<span class="value">{{sugars.amount}}</span>
+					<table>
+						<tr>
+							<td>
+								<span class="key">Sugars</span>
+								<span class="value">
+									<span>{{sugars.amount}}</span><span>{{sugars.unit}}</span>
+								</span>
+							</td>
+							<td class="x-right">{{sugars.referenceDailyIntakes}}</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 			<div id="protein" hidden="{{!protein}}">
 				<hr>
-				<span class="key x-strong">Protein</span>
-				<span class="value">{{protein.amount}}</span>
+				<table>
+					<tr>
+						<td>
+							<span class="key x-strong">Protein</span>
+							<span class="value">
+								<span>{{protein.amount}}</span><span>{{protein.unit}}</span>
+							</span>
+						</td>
+						<td class="x-right">{{protein.referenceDailyIntakes}}</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 		<hr class="hr-1 x-block">
@@ -216,6 +304,45 @@
 						return {};
 					}
 				},
+				dailyValues: {
+					type: Object,
+					value: {
+						"totalFat": 65,
+						"saturatedFat": 20,
+						"cholesterol": 300,
+						"sodium": 2400,
+						"potassium": 3500,
+						"totalCarbohydrate": 300,
+						"dietaryFiber": 25,
+						"protein": 50,
+						"vitaminA": 5000,
+						"vitaminC": 60,
+						"calcium": 1000,
+						"iron": 18,
+						"vitaminD": 400,
+						"vitaminE": 30,
+						"vitaminK": 80,
+						"thiamin": 1.5,
+						"riboflavin": 1.7,
+						"niacin": 20,
+						"vitaminB6": 2,
+						"folate": 400,
+						"vitaminB12": 6,
+						"biotin": 300,
+						"pantothenicAcid": 10,
+						"phosphorus": 1000,
+						"iodine": 150,
+						"magnesium": 400,
+						"zinc": 15,
+						"selenium": 70,
+						"copper": 2,
+						"manganese": 2,
+						"chromium": 120,
+						"molybdenum": 75,
+						"chloride": 3400
+					}
+				},
+
 				servingSize: {
 					type: String,
 					readOnly: true
@@ -226,63 +353,63 @@
 				},
 				calories: {
 					type: Number,
-					computed: "getNutrientValue(data.calories)"
+					computed: "getNutrientValue('calories', data, dailyValues)"
 				},
 				caloriesFromFat: {
 					type: Number,
-					computed: "getNutrientValue(data.caloriesFromFat)"
+					computed: "getNutrientValue('caloriesFromFat', data, dailyValues)"
 				},
 				totalFat: {
 					type: Number,
-					computed: "getNutrientValue(data.totalFat)"
+					computed: "getNutrientValue('totalFat', data, dailyValues)"
 				},
 				saturatedFat: {
 					type: Number,
-					computed: "getNutrientValue(data.saturatedFat)"
+					computed: "getNutrientValue('saturatedFat', data, dailyValues)"
 				},
 				transFat: {
 					type: Number,
-					computed: "getNutrientValue(data.transFat)"
+					computed: "getNutrientValue('transFat', data, dailyValues)"
 				},
 				cholesterol: {
 					type: Number,
-					computed: "getNutrientValue(data.cholesterol)"
+					computed: "getNutrientValue('cholesterol', data, dailyValues)"
 				},
 				sodium: {
 					type: Number,
-					computed: "getNutrientValue(data.sodium)"
+					computed: "getNutrientValue('sodium', data, dailyValues)"
 				},
 				carbohydrate: {
 					type: Number,
-					computed: "getNutrientValue(data.carbohydrate)"
+					computed: "getNutrientValue('carbohydrate', data, dailyValues)"
 				},
 				dietaryFiber: {
 					type: Number,
-					computed: "getNutrientValue(data.dietaryFiber)"
+					computed: "getNutrientValue('dietaryFiber', data, dailyValues)"
 				},
 				sugars: {
 					type: Number,
-					computed: "getNutrientValue(data.sugars)"
+					computed: "getNutrientValue('sugars', data, dailyValues)"
 				},
 				protein: {
 					type: Number,
-					computed: "getNutrientValue(data.protein)"
+					computed: "getNutrientValue('protein', data, dailyValues)"
 				},
 				vitaminA: {
 					type: Number,
-					computed: "getNutrientValue(data.vitaminA)"
+					computed: "getNutrientValue('vitaminA', data, dailyValues)"
 				},
 				vitaminC: {
 					type: Number,
-					computed: "getNutrientValue(data.vitaminC)"
+					computed: "getNutrientValue('vitaminC', data, dailyValues)"
 				},
 				iron: {
 					type: Number,
-					computed: "getNutrientValue(data.iron)"
+					computed: "getNutrientValue('iron', data, dailyValues)"
 				},
 				calcium: {
 					type: Number,
-					computed: "getNutrientValue(data.calcium)"
+					computed: "getNutrientValue('calcium', data, dailyValues)"
 				}
 			},
 
@@ -291,7 +418,7 @@
 				this.$.dailyReferenceValues.generateRequest();
 			},
 
-			hresponse: function(request) {
+			setDailyValues: function(request) {
 				this.dailyValues = _.chain(request.detail.response.results)
 						.indexBy(function (object) {
 							return _.camelCase(object.food_value);
@@ -300,12 +427,14 @@
 						.value();
 			},
 
-			getNutrientValue: function (nutrient) {
+			getNutrientValue: function(nutrient, data, dailyValues) {
 				if (!nutrient) return false;
+				var measurement = (nutrient === 'cholesterol' || nutrient === 'sodium') ? 'mg' : 'g';
 				return {
-					amount: nutrient,
-					dailyReferenceValue: nutrient,
-					referenceDailyIntakes: nutrient
+					unit: measurement,
+					amount: data[nutrient],
+					dailyReferenceValue: dailyValues[nutrient],
+					referenceDailyIntakes: (this.dailyValues[nutrient]) ? Math.floor((data[nutrient] / this.dailyValues[nutrient]) * 100) : null
 				};
 			}
 		});
