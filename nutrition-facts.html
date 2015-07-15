@@ -131,36 +131,42 @@
 
 		<div id="nutrients" class="x-block">
 			<div id="fat">
-				<div id="totalFat">
-					<nutrient-fact data="{{totalFat}}" strong>Total Fat</nutrient-fact>
-				</div>
-				<div id="saturatedFat" class="x-block" hidden="{{!saturatedFat.amount}}">
-					<nutrient-fact data="{{saturatedFat}}">Saturated Fat</nutrient-fact>
-				</div>
-				<div id="transFat" class="x-block" hidden="{{!transFat.amount}}">
-					<nutrient-fact data="{{transFat}}"><i>Trans</i> Fat</nutrient-fact>
-				</div>
+				<nutrient-fact id="totalFat"
+				               data="{{totalFat}}"
+				               strong required>Total Fat</nutrient-fact>
+				<nutrient-fact id="saturatedFat"
+				               class="x-block"
+				               data="{{saturatedFat}}">Saturated Fat</nutrient-fact>
+				<nutrient-fact id="transFat"
+				               class="x-block"
+				               data="{{transFat}}"><i>Trans</i> Fat</nutrient-fact>
+				<nutrient-fact id="polyunsaturatedFat"
+				               class="x-block"
+				               data="{{polyunsaturatedFat}}">Polyunsaturated Fat</nutrient-fact>
+				<nutrient-fact id="monounsaturatedFat"
+				               class="x-block"
+				               data="{{monounsaturatedFat}}">Monounsaturated Fat</nutrient-fact>
 			</div>
-			<div id="cholesterol" hidden="{{!cholesterol.amount}}">
-				<nutrient-fact data="{{cholesterol}}" strong>Cholesterol</nutrient-fact>
-			</div>
-			<div id="sodium">
-				<nutrient-fact data="{{sodium}}" strong>Sodium</nutrient-fact>
-			</div>
+			<nutrient-fact id="cholesterol"
+			               data="{{cholesterol}}"
+			               strong>Cholesterol</nutrient-fact>
+			<nutrient-fact id="sodium"
+			               data="{{sodium}}"
+			               strong required>Sodium</nutrient-fact>
 			<div id="carbohydrates">
-				<div id="totalCarbohydrates">
-					<nutrient-fact data="{{carbohydrate}}" strong>Total Carbohydrate</nutrient-fact>
-				</div>
-				<div id="dietaryCarbohydrates" class="x-block" hidden="{{!dietaryFiber.amount}}">
-					<nutrient-fact data="{{dietaryFiber}}">Dietary Fiber</nutrient-fact>
-				</div>
-				<div id="sugarsCarbohydrates" class="x-block" hidden="{{!sugars.amount}}">
-					<nutrient-fact data="{{sugars}}">Sugars</nutrient-fact>
-				</div>
+				<nutrient-fact id="totalCarbohydrates"
+				               data="{{carbohydrate}}"
+				               strong required>Total Carbohydrate</nutrient-fact>
+				<nutrient-fact id="dietaryCarbohydrates"
+				               class="x-block"
+				               data="{{dietaryFiber}}">Dietary Fiber</nutrient-fact>
+				<nutrient-fact id="sugarsCarbohydrates"
+				               class="x-block"
+				               data="{{sugars}}">Sugars</nutrient-fact>
 			</div>
-			<div id="protein" hidden="{{!protein.amount}}">
-				<nutrient-fact data="{{protein}}" strong>Protein</nutrient-fact>
-			</div>
+			<nutrient-fact id="protein"
+			               data="{{protein}}"
+			               strong>Protein</nutrient-fact>
 		</div>
 
 		<hr class="hr-1 x-block">
@@ -271,6 +277,14 @@
 				saturatedFat: {
 					type: Number,
 					computed: "getNutrientValue('saturatedFat', data, dailyValues)"
+				},
+				polyunsaturatedFat: {
+					type: Number,
+					computed: "getNutrientValue('polyunsaturatedFat', data, dailyValues)"
+				},
+				monounsaturatedFat: {
+					type: Number,
+					computed: "getNutrientValue('monounsaturatedFat', data, dailyValues)"
 				},
 				transFat: {
 					type: Number,

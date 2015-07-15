@@ -15,7 +15,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 		<title>nutrition-facts Demo</title>
 		<script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 		<link rel="import" href="../nutrition-facts.html">
-		<link rel="import" href="../my-wrapper.html">
 
 		<style>
 			nutrition-facts {
@@ -31,7 +30,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 		<p>An example of <code>&lt;nutrition-facts&gt;</code>:</p>
 
 
-
 		<nutrition-facts data='{
 				"servingSize": "228g",
 				"servingsPerContainer": 2,
@@ -39,6 +37,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				"caloriesFromFat": 8,
 				"totalFat": 10,
 				"saturatedFat": 10,
+				"polyunsaturatedFat": 10,
+				"monounsaturatedFat": 10,
 				"transFat": 10,
 				"cholesterol": 10,
 				"sodium": 10,
@@ -53,13 +53,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			}'>
 		</nutrition-facts>
 
-		<!--nutrition-facts serving-size="228g" servings-per-container="2"
-						 calories="15" calories-from-fat="8"
-						 total-fat="10" saturated-fat="10" trans-fat="10"
-						 cholesterol="10" sodium="10"
-						 carbohydrate="10" dietary-fiber="10" sugars="10"
-						 protein="10" vitamin-a="4" vitamin-c="4" iron="6" calcium="10">
-		<nutrition-facts-->
+		<nutrition-facts data='{
+				"servingSize": "228g",
+				"servingsPerContainer": 2,
+				"calories": 15,
+				"caloriesFromFat": 8,
+				"totalFat": 10,
+				"cholesterol": 10,
+				"sodium": 10,
+				"carbohydrate": 10,
+				"protein": 10
+			}'>
+		</nutrition-facts>
 
 		<nutrition-facts data='{"servingSize": "228g", "servingsPerContainer": 2}'/>
 

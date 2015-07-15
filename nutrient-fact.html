@@ -30,25 +30,41 @@
 	</style>
 
 	<template>
-		<hr>
-		<table class="{{toggleClass('x-strong', strong)}}">
-			<tr>
-				<td>
-					<span class="key"><content/></span>
-					<span class="value">
-						<span>[[data.amount]]</span><span>[[data.unit]]</span>
-					</span>
-				</td>
-				<td class="x-right">[[data.referenceDailyIntakes]]</td>
-			</tr>
-		</table>
+		<div hidden="{{isHidden(data, required)}}">
+			<hr>
+			<table class="{{toggleClass('x-strong', strong)}}">
+				<tr>
+					<td>
+						<span class="key"><content/></span>
+						<span class="value">
+							<span>[[data.amount]]</span><span>[[data.unit]]</span>
+						</span>
+					</td>
+					<td class="x-right">[[data.referenceDailyIntakes]]</td>
+				</tr>
+			</table>
+		</div>
 	</template>
 
 	<script>
 		Polymer({
 			is: 'nutrient-fact',
 			properties: {
-				strong: Boolean
+				data: {
+					type: Object,
+					value: function(){return{};}
+				},
+				strong: {
+					type: Boolean,
+					value: false
+				},
+				required: {
+					type: Boolean,
+					value: false
+				}
+			},
+			isHidden: function(data, required) {
+				return !data.amount && !required;
 			}
 		});
 	</script>
