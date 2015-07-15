@@ -2,6 +2,7 @@
 <link rel="import" href="../iron-ajax/iron-ajax.html">
 <script src="../lodash/lodash.js"></script>
 
+<link rel="import" href="./nutrient-fact.html">
 
 <dom-module id="nutrition-facts">
 	<style>
@@ -128,135 +129,37 @@
 		<div id="nutrients" class="x-block">
 			<div id="fat">
 				<div id="totalFat">
-					<hr>
-					<table>
-						<tr>
-							<td>
-								<span class="key x-strong">Total Fat</span>
-								<span class="value">
-									<span>{{totalFat.amount}}</span><span>{{totalFat.unit}}</span>
-								</span>
-							</td>
-							<td class="x-right">{{totalFat.referenceDailyIntakes}}</td>
-						</tr>
-					</table>
+					<nutrient-fact data="{{totalFat}}" strong>Total Fat</nutrient-fact>
 				</div>
-				<div id="saturatedFat" class="x-block" hidden="{{!saturatedFat}}">
-					<hr class="hr">
-					<table>
-						<tr>
-							<td>
-								<span class="key">Saturated Fat</span>
-								<span class="value">
-									<span>{{saturatedFat.amount}}</span><span>{{saturatedFat.unit}}</span>
-								</span>
-							</td>
-							<td class="x-right">{{saturatedFat.referenceDailyIntakes}}</td>
-						</tr>
-					</table>
+				<div id="saturatedFat" class="x-block" hidden="{{!saturatedFat.amount}}">
+					<nutrient-fact data="{{saturatedFat}}">Saturated Fat</nutrient-fact>
 				</div>
-				<div id="transFat" class="x-block" hidden="{{!transFat}}">
-					<hr>
-					<table>
-						<tr>
-							<td>
-								<span class="key"><em>Trans</em> Fat</span>
-								<span class="value">
-									<span>{{transFat.amount}}</span><span>{{transFat.unit}}</span>
-								</span>
-							</td>
-							<td class="x-right">{{transFat.referenceDailyIntakes}}</td>
-						</tr>
-					</table>
+				<div id="transFat" class="x-block" hidden="{{!transFat.amount}}">
+					<nutrient-fact data="{{transFat}}"><i>Trans</i> Fat</nutrient-fact>
 				</div>
 			</div>
-			<div id="cholesterol" hidden="{{!cholesterol}}">
-				<hr>
-				<table>
-					<tr>
-						<td>
-							<span class="key x-strong">Cholesterol</span>
-							<span class="value">
-								<span>{{cholesterol.amount}}</span><span>{{cholesterol.unit}}</span>
-							</span>
-						</td>
-						<td class="x-right">{{cholesterol.referenceDailyIntakes}}</td>
-					</tr>
-				</table>
+			<div id="cholesterol" hidden="{{!cholesterol.amount}}">
+				<nutrient-fact data="{{cholesterol}}" strong>Cholesterol</nutrient-fact>
 			</div>
 			<div id="sodium">
-				<hr>
-				<table>
-					<tr>
-						<td>
-							<span class="key x-strong">Sodium</span>
-							<span class="value">
-								<span>{{sodium.amount}}</span><span>{{sodium.unit}}</span>
-							</span>
-						</td>
-						<td class="x-right">{{sodium.referenceDailyIntakes}}</td>
-					</tr>
-				</table>
+				<nutrient-fact data="{{sodium}}" strong>Sodium</nutrient-fact>
 			</div>
 			<div id="carbohydrates">
 				<div id="totalCarbohydrates">
-					<hr>
-					<table>
-						<tr>
-							<td>
-								<span class="key x-strong">Total Carbohydrate</span>
-								<span class="value">
-									<span>{{carbohydrate.amount}}</span><span>{{carbohydrate.unit}}</span>
-								</span>
-							</td>
-							<td class="x-right">{{carbohydrate.referenceDailyIntakes}}</td>
-						</tr>
-					</table>
+					<nutrient-fact data="{{carbohydrate}}" strong>Total Carbohydrate</nutrient-fact>
 				</div>
-				<div id="dietaryCarbohydrates" class="x-block" hidden="{{!dietaryFiber}}">
-					<hr>
-					<table>
-						<tr>
-							<td>
-								<span class="key">Dietary Fiber</span>
-								<span class="value">
-									<span>{{dietaryFiber.amount}}</span><span>{{dietaryFiber.unit}}</span>
-								</span>
-							</td>
-							<td class="x-right">{{dietaryFiber.referenceDailyIntakes}}</td>
-						</tr>
-					</table>
+				<div id="dietaryCarbohydrates" class="x-block" hidden="{{!dietaryFiber.amount}}">
+					<nutrient-fact data="{{dietaryFiber}}">Dietary Fiber</nutrient-fact>
 				</div>
-				<div id="sugarsCarbohydrates" class="x-block" hidden="{{!sugars}}">
-					<hr>
-					<table>
-						<tr>
-							<td>
-								<span class="key">Sugars</span>
-								<span class="value">
-									<span>{{sugars.amount}}</span><span>{{sugars.unit}}</span>
-								</span>
-							</td>
-							<td class="x-right">{{sugars.referenceDailyIntakes}}</td>
-						</tr>
-					</table>
+				<div id="sugarsCarbohydrates" class="x-block" hidden="{{!sugars.amount}}">
+					<nutrient-fact data="{{sugars}}">Sugars</nutrient-fact>
 				</div>
 			</div>
-			<div id="protein" hidden="{{!protein}}">
-				<hr>
-				<table>
-					<tr>
-						<td>
-							<span class="key x-strong">Protein</span>
-							<span class="value">
-								<span>{{protein.amount}}</span><span>{{protein.unit}}</span>
-							</span>
-						</td>
-						<td class="x-right">{{protein.referenceDailyIntakes}}</td>
-					</tr>
-				</table>
+			<div id="protein" hidden="{{!protein.amount}}">
+				<nutrient-fact data="{{protein}}" strong>Protein</nutrient-fact>
 			</div>
 		</div>
+
 		<hr class="hr-1 x-block">
 		<div id="vitamins" class="x-block">
 			<table><tr>
@@ -301,9 +204,7 @@
 				 */
 				data: {
 					type: Object,
-					value: function() {
-						return {};
-					}
+					value: function(){return{};}
 				},
 				dailyValues: {
 					type: Object,
@@ -430,12 +331,13 @@
 
 			getNutrientValue: function(nutrient, data, dailyValues) {
 				if (!nutrient) return false;
-				var measurement = (nutrient === 'cholesterol' || nutrient === 'sodium') ? 'mg' : 'g';
+				var measurement = (nutrient === 'cholesterol' || nutrient === 'sodium') ? 'mg' : 'g',
+					rdi = Math.floor((data[nutrient] / this.dailyValues[nutrient]) * 100);
 				return {
-					unit: measurement,
+					unit: data[nutrient] ? measurement : null,
 					amount: data[nutrient],
 					dailyReferenceValue: dailyValues[nutrient],
-					referenceDailyIntakes: (this.dailyValues[nutrient]) ? Math.floor((data[nutrient] / this.dailyValues[nutrient]) * 100) : null
+					referenceDailyIntakes: !isNaN(rdi) ? rdi : null
 				};
 			}
 		});
